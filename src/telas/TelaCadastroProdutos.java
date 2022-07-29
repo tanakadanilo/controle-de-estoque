@@ -5,6 +5,7 @@
 package telas;
 
 import modelos.Produto;
+import modelos.estoque.ProdutoEstoque;
 
 /**
  *
@@ -150,7 +151,7 @@ public class TelaCadastroProdutos extends javax.swing.JInternalFrame {
         int quantidadeEstoque = Integer.parseInt(jFormattedTextField_quantidadeEstoque.getText().replace(".", ""));
         int estoqueMinimo = Integer.parseInt(jFormattedTextField_estoqueMinimo.getText().replace(".", ""));
 
-        Produto p = new Produto(nome, codigo, descricao);
+        Produto p = new ProdutoEstoque(quantidadeEstoque, estoqueMinimo, nome, codigo, descricao);
         throw new UnsupportedOperationException("O bancoo de dados ainda não foi implementado");
     }//GEN-LAST:event_jButton_adicionarActionPerformed
 
