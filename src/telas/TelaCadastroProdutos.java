@@ -152,6 +152,7 @@ public class TelaCadastroProdutos extends javax.swing.JInternalFrame {
         int estoqueMinimo = Integer.parseInt(jFormattedTextField_estoqueMinimo.getText().replace(".", ""));
 
         Produto p = new ProdutoEstoque(quantidadeEstoque, estoqueMinimo, nome, codigo, descricao);
+        System.out.println(p.toString());
         throw new UnsupportedOperationException("O bancoo de dados ainda não foi implementado");
     }//GEN-LAST:event_jButton_adicionarActionPerformed
 

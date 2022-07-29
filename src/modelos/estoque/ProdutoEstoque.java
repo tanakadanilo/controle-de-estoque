@@ -79,14 +79,12 @@ public class ProdutoEstoque extends Produto implements estoque {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("ProdutoEstoque{");
-        sb.append("quantidadeEstoque=").append(quantidadeEstoque);
-        sb.append(", estoqueMinimo=").append(estoqueMinimo);
-        sb.append(", ativo=").append(ativo);
-        sb.append(super.toString());
-        sb.append('}');
-        return sb.toString();
+        JSONObject obj = new JSONObject();
+        obj.put("quantidade no estoque", quantidadeEstoque);
+        obj.put("estoque minimo", estoqueMinimo);
+        obj.put("ativo", ativo);
+        obj.put("Produto", super.toString());
+        return obj.toString();
     }
 
 }

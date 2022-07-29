@@ -4,6 +4,8 @@
  */
 package modelos;
 
+import org.json.JSONObject;
+
 /**
  *
  * @author tanak
@@ -52,13 +54,11 @@ public class Produto {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Produto{");
-        sb.append("nome=").append(nome);
-        sb.append(", codigo=").append(codigo);
-        sb.append(", descricao=").append(descricao);
-        sb.append('}');
-        return sb.toString();
+        JSONObject obj = new JSONObject();
+        obj.put("nome", nome);
+        obj.put("codigo", codigo);
+        obj.put("descricao", descricao);
+        return obj.toString();
     }
 
 }
