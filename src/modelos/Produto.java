@@ -50,4 +50,15 @@ public class Produto {
         this.descricao = descricao;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Produto{");
+        sb.append("nome=").append(nome);
+        sb.append(", codigo=").append(codigo);
+        sb.append(", descricao=").append(descricao);
+        sb.append('}');
+        return sb.toString();
+    }
+
 }

@@ -8,56 +8,26 @@ package modelos.estoque;
  *
  * @author tanak
  */
-public abstract class estoque {
+public interface estoque {
 
     /* *
         * classe pai de tudo que será salvo no estoque
      */
-    protected final String NOME_ARQUIVO;
-    protected final String NOME_TIPO;
-    protected int quantidadeNoEstoque = 0;
-    protected int quantidadeMinima = 0;
+    String getNOME_ARQUIVO();
 
-    public estoque(String NOME_ARQUIVO, String NOME_TIPO) {
-        this.NOME_ARQUIVO = NOME_ARQUIVO;
-        this.NOME_TIPO = NOME_TIPO;
-    }
+    String getNOME_TIPO();
 
-    public estoque(String NOME_ARQUIVO, String NOME_TIPO, int quantidadeNoEstoque) {
-        this.NOME_ARQUIVO = NOME_ARQUIVO;
-        this.NOME_TIPO = NOME_TIPO;
-        this.quantidadeNoEstoque = quantidadeNoEstoque;
-    }
+    int getQuantidadeNoEstoque();
 
-    public estoque(String NOME_ARQUIVO, String NOME_TIPO, int quantidadeNoEstoque, int quantidadeMinima) {
-        this.NOME_ARQUIVO = NOME_ARQUIVO;
-        this.NOME_TIPO = NOME_TIPO;
-        this.quantidadeNoEstoque = quantidadeNoEstoque;
-        this.quantidadeMinima = quantidadeMinima;
-    }
+    void setQuantidadeNoEstoque(int quantidadeNoEstoque);
 
-    public String getNOME_ARQUIVO() {
-        return NOME_ARQUIVO;
-    }
+    int getQuantidadeMinima();
 
-    public String getNOME_TIPO() {
-        return NOME_TIPO;
-    }
+    void setQuantidadeMinima(int quantidadeMinima);
 
-    public int getQuantidadeNoEstoque() {
-        return quantidadeNoEstoque;
-    }
+    boolean isAtivo();
 
-    public void setQuantidadeNoEstoque(int quantidadeNoEstoque) {
-        this.quantidadeNoEstoque = quantidadeNoEstoque;
-    }
+    void ativar();
 
-    public int getQuantidadeMinima() {
-        return quantidadeMinima;
-    }
-
-    public void setQuantidadeMinima(int quantidadeMinima) {
-        this.quantidadeMinima = quantidadeMinima;
-    }
-
+    void desativar();
 }
