@@ -1,1 +1,1 @@
-{"Maior Deposito":1,"Menor Caixa":1,"Maior Estante":18,"Menor Deposito":1,"Menor Andar":0,"Menor Bloco":"A","Maior Andar":4,"Menor Estante":1,"Maior Caixa":5,"Menor Prateleira":1,"Maior Bloco":"F","Maior Prateleira":43}
+{"Maior Deposito":1,"Menor Caixa":7,"Maior Estante":1,"Menor Deposito":2,"Menor Andar":5,"Menor Bloco":"G","Maior Andar":1,"Menor Estante":20,"Maior Caixa":1,"Menor Prateleira":43,"Maior Bloco":"A","Maior Prateleira":1}
