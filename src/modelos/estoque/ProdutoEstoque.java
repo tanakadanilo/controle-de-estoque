@@ -4,6 +4,7 @@
  */
 package modelos.estoque;
 
+import controlajson.ControlaJson;
 import modelos.Produto;
 import org.json.JSONObject;
 
@@ -20,13 +21,13 @@ public class ProdutoEstoque extends Produto implements estoque {
     protected boolean ativo = true;
 
     public ProdutoEstoque() {
-        this.NOME_ARQUIVO = "null";
-        this.TIPO_ARQUIVO = "null";
+        this.NOME_ARQUIVO = "ProdutoEstoque";
+        this.TIPO_ARQUIVO = "txt";
     }
 
     public ProdutoEstoque(int quantidadeEstoque, int estoqueMinimo, String nome, String codigo, String descricao) {
         super(nome, codigo, descricao);
-        this.NOME_ARQUIVO = nome;
+        this.NOME_ARQUIVO = "ProdutoEstoque";
         this.TIPO_ARQUIVO = "txt";
         this.quantidadeEstoque = quantidadeEstoque;
         this.estoqueMinimo = estoqueMinimo;
@@ -80,10 +81,10 @@ public class ProdutoEstoque extends Produto implements estoque {
     @Override
     public String toString() {
         JSONObject obj = new JSONObject();
-        obj.put("quantidade no estoque", quantidadeEstoque);
-        obj.put("estoque minimo", estoqueMinimo);
-        obj.put("ativo", ativo);
-        obj.put("Produto", super.toString());
+        obj.put(ControlaJson.keysProdutoEstoque[0], quantidadeEstoque);
+        obj.put(ControlaJson.keysProdutoEstoque[1], estoqueMinimo);
+        obj.put(ControlaJson.keysProdutoEstoque[2], ativo);
+        obj.put(ControlaJson.keysProdutoEstoque[3], super.toString());
         return obj.toString();
     }
 

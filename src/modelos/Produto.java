@@ -4,6 +4,7 @@
  */
 package modelos;
 
+import controlajson.ControlaJson;
 import org.json.JSONObject;
 
 /**
@@ -55,9 +56,9 @@ public class Produto {
     @Override
     public String toString() {
         JSONObject obj = new JSONObject();
-        obj.put("nome", nome);
-        obj.put("codigo", codigo);
-        obj.put("descricao", descricao);
+        obj.put(ControlaJson.keysProduto[0], nome);
+        obj.put(ControlaJson.keysProduto[1], codigo);
+        obj.put(ControlaJson.keysProduto[2], descricao);
         return obj.toString();
     }
 
