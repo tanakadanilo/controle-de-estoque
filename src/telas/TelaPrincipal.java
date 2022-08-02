@@ -6,6 +6,7 @@ package telas;
 
 import java.awt.Component;
 import javax.swing.JDesktopPane;
+import javax.swing.JInternalFrame;
 
 /**
  *
@@ -18,6 +19,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
      */
     public TelaPrincipal() {
         initComponents();
+    }
+
+    private void limpaTelas() {
+        JInternalFrame[] listaFrames = jDesktopPane1.getAllFrames();
+        if (listaFrames != null && listaFrames.length > 0) {//  * vendo se existe alguma internalFrame sendo mostrada
+            for (JInternalFrame frame : listaFrames) {
+                frame.setVisible(false);//  * apagando jInternalFrame
+            }
+        }
     }
 
     /**
@@ -112,6 +122,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        limpaTelas();
         Component tela = new TelaCadastroProdutos();
         tela.setVisible(true);
         jDesktopPane1.add(tela);
@@ -120,6 +131,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
      }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        limpaTelas();
         Component tela = new TelaInformacoesEstoqueFisico();
         tela.setVisible(true);
         jDesktopPane1.add(tela);

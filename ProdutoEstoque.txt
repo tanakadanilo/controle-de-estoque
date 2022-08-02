@@ -1,0 +1,2 @@
+{"estoque minimo":0,"ativo":true,"quantidade no estoque":0,"Produto":"{\"codigo\":\"\",\"nome\":\"\",\"descricao\":\"\"}"}
+{"estoque minimo":0,"ativo":true,"quantidade no estoque":1,"Produto":"{\"codigo\":\"123\",\"nome\":\"Carro\",\"descricao\":\"Carro azul de 4 portas\"}"}{"estoque minimo":0,"ativo":true,"quantidade no estoque":1,"Produto":"{\"codigo\":\"122\",\"nome\":\"Moto\",\"descricao\":\"Moto verde fluorescente \"}"}

@@ -5,9 +5,11 @@
         <group>
             <file>file:/C:/Users/tanak/OneDrive/Documentos/GitHub/controle-de-estoque/src/telas/TelaPrincipal.java</file>
             <file>file:/C:/Users/tanak/OneDrive/Documentos/GitHub/controle-de-estoque/src/modelos/auxiliares/PosicaoEstoque.java</file>
-            <file>file:/C:/Users/tanak/OneDrive/Documentos/GitHub/controle-de-estoque/src/modelos/auxiliares/EstoqueFisico.java</file>
-            <file>file:/C:/Users/tanak/OneDrive/Documentos/GitHub/controle-de-estoque/src/controleestoque/Teste.java</file>
+            <file>file:/C:/Users/tanak/OneDrive/Documentos/GitHub/controle-de-estoque/src/telas/TelaCadastroProdutos.java</file>
             <file>file:/C:/Users/tanak/OneDrive/Documentos/GitHub/controle-de-estoque/src/telas/TelaInformacoesEstoqueFisico.java</file>
+            <file>file:/C:/Users/tanak/OneDrive/Documentos/GitHub/controle-de-estoque/src/controleestoque/Teste.java</file>
+            <file>file:/C:/Users/tanak/OneDrive/Documentos/GitHub/controle-de-estoque/src/bancodedados/ControlaBancoProdutosEstoque.java</file>
+            <file>file:/C:/Users/tanak/OneDrive/Documentos/GitHub/controle-de-estoque/src/controlajson/ControlaJson.java</file>
         </group>
     </open-files>
 </project-private>
