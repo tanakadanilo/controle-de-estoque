@@ -84,7 +84,7 @@ public class ProdutoEstoque extends Produto implements estoque {
         obj.put(ControlaJson.keysProdutoEstoque[0], quantidadeEstoque);
         obj.put(ControlaJson.keysProdutoEstoque[1], estoqueMinimo);
         obj.put(ControlaJson.keysProdutoEstoque[2], ativo);
-        obj.put(ControlaJson.keysProdutoEstoque[3], super.toString());
+        obj.put(ControlaJson.keysProdutoEstoque[3], super.toJson());
         return obj.toString();
     }
 

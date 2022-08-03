@@ -55,11 +55,15 @@ public class Produto {
 
     @Override
     public String toString() {
+        return toJson().toString();
+    }
+
+    public JSONObject toJson() {
         JSONObject obj = new JSONObject();
         obj.put(ControlaJson.keysProduto[0], nome);
         obj.put(ControlaJson.keysProduto[1], codigo);
         obj.put(ControlaJson.keysProduto[2], descricao);
-        return obj.toString();
+        return obj;
     }
 
 }

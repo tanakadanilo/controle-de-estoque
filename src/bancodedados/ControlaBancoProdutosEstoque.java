@@ -5,6 +5,7 @@
 package bancodedados;
 
 import controlajson.ControlaJson;
+import excessoes.ExcecaoEstadoIlegal;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -32,11 +33,11 @@ public class ControlaBancoProdutosEstoque implements IBancoDeDados<ProdutoEstoqu
         int quantidadeEstoque = objeto.getInt(ControlaJson.keysProdutoEstoque[0]);
         int estoqueMinimo = objeto.getInt(ControlaJson.keysProdutoEstoque[1]);
         boolean ativo = objeto.getBoolean(ControlaJson.keysProdutoEstoque[2]);
-        String nome = objeto.getString(ControlaJson.keysProduto[0]);
-        String codigo = objeto.getString(ControlaJson.keysProduto[1]);
-        String descricao = objeto.getString(ControlaJson.keysProduto[2]);
+        JSONObject objProduto = new JSONObject(objeto.get(ControlaJson.keysProdutoEstoque[3]).toString());
+        String nome = objProduto.getString(ControlaJson.keysProduto[0]);
+        String codigo = objProduto.getString(ControlaJson.keysProduto[1]);
+        String descricao = objProduto.getString(ControlaJson.keysProduto[2]);
         return new ProdutoEstoque(quantidadeEstoque, estoqueMinimo, nome, codigo, descricao);
-
     }
 
     @Override
@@ -56,15 +57,16 @@ public class ControlaBancoProdutosEstoque implements IBancoDeDados<ProdutoEstoqu
 
             String linha = br.readLine();
             while (linha != null) {
-
                 ProdutoEstoque p = parse(new JSONObject(linha));
                 if (p.isAtivo()) {
                     listaCompleta.add(p);
                 }
+                linha = br.readLine();
             }
-        } catch (FileNotFoundException ex) {
+        } catch (Exception ex) {
             System.out.println(this.getNOME_ARQUIVO() + "." + this.getNOME_TIPO());
             Logger.getLogger(ControlaBancoProdutosEstoque.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ExcecaoEstadoIlegal("O arquivo onde os dados estão sendo salvos não pode ser encontrado");
         } finally {
             if (listaCompleta.isEmpty()) {
                 return null;

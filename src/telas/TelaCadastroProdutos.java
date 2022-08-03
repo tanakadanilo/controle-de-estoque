@@ -7,9 +7,11 @@ package telas;
 import bancodedados.ControlaBancoProdutosEstoque;
 import excessoes.ExcecaoRegraDoBanco;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import modelos.Produto;
 import modelos.estoque.ProdutoEstoque;
 
@@ -23,8 +25,32 @@ public class TelaCadastroProdutos extends javax.swing.JInternalFrame {
      * Creates new form TelaCadastroProdutos
      */
     public TelaCadastroProdutos() {
-        initComponents();
-        jLabel_Salvo.setVisible(false);
+        try {
+            initComponents();
+            jLabel_Salvo.setVisible(false);
+            loadTableProdutos();
+        } catch (IOException ex) {
+            Logger.getLogger(TelaCadastroProdutos.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(rootPane, ex.getMessage());
+        }
+    }
+
+    private void loadTableProdutos() throws IOException {
+        ArrayList<ProdutoEstoque> listaCompleta = new ControlaBancoProdutosEstoque().buscarTodos();
+        if (listaCompleta == null || listaCompleta.isEmpty()) {
+            return;
+        }
+        DefaultTableModel table = (DefaultTableModel) jTable_Produtos.getModel();
+        table.setRowCount(0);
+        for (var r : listaCompleta) {
+            String[] dados = {r.getNome(),
+                r.getCodigo(),
+                r.getDescricao(),
+                "" + r.getQuantidadeNoEstoque(),
+                "" + r.getQuantidadeMinima()};
+
+            table.addRow(dados);
+        }
     }
 
     /**
@@ -51,6 +77,8 @@ public class TelaCadastroProdutos extends javax.swing.JInternalFrame {
         jFormattedTextField_quantidadeEstoque = new javax.swing.JFormattedTextField();
         jFormattedTextField_estoqueMinimo = new javax.swing.JFormattedTextField();
         jLabel_Salvo = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable_Produtos = new javax.swing.JTable();
 
         jLabel1.setText("Nome: ");
 
@@ -82,6 +110,31 @@ public class TelaCadastroProdutos extends javax.swing.JInternalFrame {
         jFormattedTextField_estoqueMinimo.setText("0");
 
         jLabel_Salvo.setText("Salvo com sucesso!");
+
+        jTable_Produtos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Código", "Descrição", "Quantidade no estoque", "Estoque mínimo"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable_Produtos);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,13 +174,18 @@ public class TelaCadastroProdutos extends javax.swing.JInternalFrame {
                                     .addComponent(jScrollPane1)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
-                        .addComponent(jLabel_Salvo)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                        .addComponent(jLabel_Salvo))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1183, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -147,7 +205,7 @@ public class TelaCadastroProdutos extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGap(1, 1, 1)
                 .addComponent(jLabel_Salvo)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,6 +252,8 @@ public class TelaCadastroProdutos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel_Salvo;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable_Produtos;
     private javax.swing.JTextArea jTextArea_descricao;
     private javax.swing.JTextField jTextField_codigo;
     private javax.swing.JTextField jTextField_nome;
