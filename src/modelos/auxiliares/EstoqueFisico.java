@@ -12,9 +12,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.JSONObject;
 
 /**
@@ -38,7 +35,7 @@ public class EstoqueFisico {
 
     public static JSONObject getValoresEstoque() throws FileNotFoundException, IOException, ExcecaoFalhaDoBancoDeDados {
         JSONObject valores = null;
-        try ( BufferedReader br = new BufferedReader(new FileReader("ValoresEstoque.txt"))) {
+        try ( BufferedReader br = new BufferedReader(new FileReader(EstoqueFisico.getNomeArquivo()))) {
             valores = new JSONObject(br.readLine());
         }
         if (valores.keySet().size() != quantidadeItens) {

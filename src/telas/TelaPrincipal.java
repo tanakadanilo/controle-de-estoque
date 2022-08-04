@@ -4,6 +4,8 @@
  */
 package telas;
 
+import bancodedados.ControlaBancoProdutosEstoque;
+import bancodedados.IBancoDeDados;
 import java.awt.Component;
 import javax.swing.JDesktopPane;
 import javax.swing.JInternalFrame;
@@ -13,6 +15,8 @@ import javax.swing.JInternalFrame;
  * @author tanak
  */
 public class TelaPrincipal extends javax.swing.JFrame {
+
+    public ControlaBancoProdutosEstoque controlaBancoProdutosEstoque = new ControlaBancoProdutosEstoque();
 
     /**
      * Creates new form TelaPrincipal
@@ -60,7 +64,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 579, Short.MAX_VALUE)
+            .addGap(0, 671, Short.MAX_VALUE)
         );
 
         jMenu1.setText("Produtos");
@@ -103,8 +107,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jDesktopPane1)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -123,7 +127,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         limpaTelas();
-        Component tela = new TelaCadastroProdutos();
+        Component tela = new TelaCadastroProdutos(this.controlaBancoProdutosEstoque);
         tela.setVisible(true);
         jDesktopPane1.add(tela);
         jDesktopPane1.setVisible(true);
