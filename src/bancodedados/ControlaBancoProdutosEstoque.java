@@ -46,14 +46,9 @@ public class ControlaBancoProdutosEstoque implements IBancoDeDados<ProdutoEstoqu
     }
 
     @Override
-    public String getNOME_TIPO() {
-        return new ProdutoEstoque().getNOME_TIPO();
-    }
-
-    @Override
     public ArrayList<ProdutoEstoque> buscarTodos() throws IOException {
         ArrayList<ProdutoEstoque> listaCompleta = new ArrayList<>();
-        try ( BufferedReader br = new BufferedReader(new FileReader(this.getNOME_ARQUIVO() + "." + this.getNOME_TIPO()))) {
+        try ( BufferedReader br = new BufferedReader(new FileReader(this.getNOME_ARQUIVO()))) {
 
             String linha = br.readLine();
             while (linha != null) {
@@ -64,7 +59,7 @@ public class ControlaBancoProdutosEstoque implements IBancoDeDados<ProdutoEstoqu
                 linha = br.readLine();
             }
         } catch (Exception ex) {
-            System.out.println(this.getNOME_ARQUIVO() + "." + this.getNOME_TIPO());
+            System.out.println(this.getNOME_ARQUIVO());
             Logger.getLogger(ControlaBancoProdutosEstoque.class.getName()).log(Level.SEVERE, null, ex);
             throw new ExcecaoEstadoIlegal("O arquivo onde os dados estão sendo salvos não pode ser encontrado");
         } finally {

@@ -15,20 +15,17 @@ import org.json.JSONObject;
 public class ProdutoEstoque extends Produto implements estoque {
 
     protected final String NOME_ARQUIVO;
-    protected final String TIPO_ARQUIVO;
     protected int quantidadeEstoque;
     protected int estoqueMinimo;
     protected boolean ativo = true;
 
     public ProdutoEstoque() {
-        this.NOME_ARQUIVO = "ProdutoEstoque";
-        this.TIPO_ARQUIVO = "txt";
+        this.NOME_ARQUIVO = "ProdutoEstoque.txt";
     }
 
     public ProdutoEstoque(int quantidadeEstoque, int estoqueMinimo, String nome, String codigo, String descricao) {
         super(nome, codigo, descricao);
-        this.NOME_ARQUIVO = "ProdutoEstoque";
-        this.TIPO_ARQUIVO = "txt";
+        this.NOME_ARQUIVO = "ProdutoEstoque.txt";
         this.quantidadeEstoque = quantidadeEstoque;
         this.estoqueMinimo = estoqueMinimo;
     }
@@ -36,11 +33,6 @@ public class ProdutoEstoque extends Produto implements estoque {
     @Override
     public String getNOME_ARQUIVO() {
         return this.NOME_ARQUIVO;
-    }
-
-    @Override
-    public String getNOME_TIPO() {
-        return this.TIPO_ARQUIVO;
     }
 
     @Override

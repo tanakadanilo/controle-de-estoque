@@ -15,8 +15,6 @@ public interface estoque {
      */
     String getNOME_ARQUIVO();
 
-    String getNOME_TIPO();
-
     int getQuantidadeNoEstoque();
 
     void setQuantidadeNoEstoque(int quantidadeNoEstoque);

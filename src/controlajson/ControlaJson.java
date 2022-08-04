@@ -19,4 +19,6 @@ public class ControlaJson {
 
     public static String[] keysProdutoEstoque = {"quantidade no estoque", "estoque minimo", "ativo", "Produto"};
     public static String[] keysProduto = {"nome", "codigo", "descricao"};
+    public static String[] keysBancoDeDados = {"ID"};
+
 }
